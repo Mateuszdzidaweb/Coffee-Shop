@@ -1,22 +1,38 @@
 <template>
   <div id="app">
-    <div id="nav">
+      <app-header></app-header>
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
        <router-link to="/about">About</router-link>
        <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
 
     <div>
-        <h1 class="bg-red-200">Hello</h1>
     </div>
     <router-view/>
+    <app-navbar ></app-navbar>
   </div>
 </template>
 
-<style src="./assets/tailwind.css"/>
 
-/* <style lang="less">
+<script>
+import Header from "@/components/Header.vue";
+import Navbar from "@/components/Navbar.vue";
+export default {
+    data(){
+        return{
+            
+        }
+    },
+    components:{
+        appHeader: Header,
+        appNavbar: Navbar,
+    }
+}
+</script>
+
+<style lang="less">
 
 
 #app {
@@ -28,15 +44,17 @@
 }
 
 #nav {
-  padding: 30px;
+ 
 
   a {
     font-weight: bold;
     color: #2c3e50;
 
-    &.router-link-exact-active {
-      color: #42b983;
+    &.router-link-exact-active > .material-icons{
+      color: #42b983  !important;
     }
   }
 }
-</style> */
+</style>
+
+<style src="./assets/tailwind.css"/>
