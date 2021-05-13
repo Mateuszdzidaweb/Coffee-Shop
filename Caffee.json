@@ -1,0 +1,31 @@
+{
+    "caffees": [{
+            "id": 0,
+            "caffeeName": "Caffè Americano",
+            "caffeeDescription": "Espresso shots are topped with hot water to produce a light layer of crema in true European style.",
+            "price": 3.50,
+            "image": "caffee-americano.png"
+        },
+        {
+            "id": 1,
+            "caffeeName": "Latte",
+            "caffeeDescription": "Our dark, rich espresso is balanced with steamed milk and topped with a light layer of foam. A perfect milk-forward warm up.",
+            "price": 2.99,
+            "image": "caffee-late.png"
+        },
+        {
+            "id": 2,
+            "caffeeName": "Flat White",
+            "caffeeDescription": "Expertly steamed milk poured over two shots of espresso and finished with delicate Rosetta art.",
+            "price": 3.20,
+            "image": "caffee-flat-white.png"
+        },
+        {
+            "id": 3,
+            "caffeeName": "Caramel Macchiato",
+            "caffeeDescription": "Freshly steamed milk with vanilla-flavoured syrup, marked with espresso and finished with caramel sauce.",
+            "price": 5.00,
+            "image": "caffee-flat-white.png"
+        }
+    ]
+}
