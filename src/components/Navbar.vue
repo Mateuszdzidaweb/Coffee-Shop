@@ -5,7 +5,7 @@
   >
     <router-link class="w-14 h-auto px-3 md:w-20 flex flex-col" to="/home">
       <span
-        class="material-icons md:text-5xl md:pl-4 self-center"
+        class="material-icons material-icons-nav md:text-5xl md:pl-4 self-center"
       >
         home
       </span>
@@ -17,7 +17,7 @@
     </router-link>
     <router-link class="w-14 h-auto px-3 md:w-20 flex flex-col" to="/stores">
       <span
-        class="material-icons md:text-5xl md:pl-4 self-center"
+        class="material-icons material-icons-nav md:text-5xl md:pl-4 self-center"
       >
         store
       </span>
@@ -29,7 +29,7 @@
     </router-link>
     <router-link class="w-14 h-auto px-3 md:w-20 flex flex-col" to="/favorites">
       <span
-        class="material-icons md:text-5xl md:pl-4 self-center"
+        class="material-icons material-icons-nav md:text-5xl md:pl-4 self-center"
       >
         favorite_border
       </span>
@@ -39,16 +39,16 @@
         Favorites
       </h1>
     </router-link>
-    <router-link class="w-14 h-auto px-3 md:w-20 flex flex-col" to="/settings">
+    <router-link class="w-14 h-auto px-3 md:w-20 flex flex-col" to="/snapp">
       <span
-        class="material-icons md:text-5xl md:pl-4 self-center"
+        class="material-icons material-icons-nav md:text-5xl md:pl-4 self-center"
       >
-        settings
+        photo_camera
       </span>
       <h1
         class="text-white text-center activePage flex justify-around text-xl md:text-3xl"
       >
-        Settings
+        Snapp
       </h1>
     </router-link>
   </div>
@@ -69,7 +69,7 @@ export default {
   background-color: #a87049;
 }
 
-.material-icons{
+.material-icons-nav{
     color: white;
     font-size: 42px  !important;
 }

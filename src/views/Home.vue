@@ -1,34 +1,36 @@
 <template>
   <div class="home mb-40">
-    <h1 class="bg-red-200">Home</h1>
 
     <div class="flex flex-row justify-around my-5 text-black">
       <div>
-        <router-link to="/goals" class="text-xl md:text-3xl"
+        <router-link to="/home" class="text-xl md:text-3xl link-active"
           >Hot Coffee</router-link
         >
       </div>
       <div>
-        <router-link to="/goals-completed" class="text-xl md:text-3xl"
+        <router-link to="/home" class="text-xl md:text-3xl"
           >Cold Coffee</router-link
         >
       </div>
     </div>
 
-    <div class="mt-10">
+    <div class="mt-10 dark:bg-gray-800">
       <swiper class="swiper pb-20" :options="swiperOption">
         <swiper-slide
           v-for="caffee in caffees"
           :key="caffee.id"
           class="rounded-xl clip-path ml-2 mr-2 p-2 text-black flex flex-col box-shadow"
         >
-          <div class="rounded-xl relative flex flex-col">
-            <img
-              class="absolute -right-8 -top-8 w-36 h-auto"
-              :src="require('@/assets/images/' + caffee.image)"
-              alt=""
-            />
-            <!-- <div
+          <router-link
+            :to="{ name: 'Caffee', params: { id: caffee.id } }"
+          >
+            <div class="rounded-xl relative flex flex-col">
+              <img
+                class="absolute -right-8 -top-8 w-36 h-auto"
+                :src="require('@/assets/images/' + caffee.image)"
+                alt=""
+              />
+              <!-- <div
               class="absolute -right-9 -top-9 w-40 h-40 rounded-full bg-cover"
               :style="{
                 background:
@@ -38,29 +40,30 @@
                   ') center no-repeat',
               }"
             ></div> -->
-            <span
-              class="material-icons md:text-5xl md:pl-4 mt-2 px-2 self-start btn-heart"
-            >
-              favorite_border
-            </span>
-            <h1 class="text-black text-2xl font-bold mt-5 px-2 self-start">
-              £{{ caffee.price }}
-            </h1>
-            <h1 class="text-black text-2xl font-bold mt-2 px-2 self-start">
-              {{ caffee.caffeeName }}
-            </h1>
-            <h1 class="text-black text-xl mt-2 px-2 self-start text-left">
-              {{ caffee.caffeeDescription }}
-            </h1>
-            <!-- <div
+              <span
+                class="material-icons md:text-5xl md:pl-4 mt-2 px-2 self-start btn-heart"
+              >
+                favorite_border
+              </span>
+              <h1 class="text-black text-2xl font-bold mt-5 px-2 self-start">
+                £{{ caffee.price }}
+              </h1>
+              <h1 class="text-black text-2xl font-bold mt-2 px-2 self-start">
+                {{ caffee.caffeeName }}
+              </h1>
+              <h1 class="text-black text-xl mt-2 px-2 self-start text-left">
+                {{ caffee.caffeeDescription }}
+              </h1>
+              <!-- <div
               class="w-10 h-10 bg-black absolute rounded-xl -bottom-2 -right-2"
             ></div> -->
-            <span
-              class="material-icons w-10 h-10 absolute rounded-xl -bottom-10 -right-5 btn-add-coffee"
-            >
-              add
-            </span>
-          </div>
+              <span
+                class="material-icons add-icon p-1 absolute rounded-xl -bottom-12 -right-5 btn-add-coffee"
+              >
+                add
+              </span>
+            </div>
+          </router-link>
         </swiper-slide>
 
         <!-- <div class="swiper-pagination w-40 h-10 bg-red-400" slot="pagination"></div> -->
@@ -73,7 +76,11 @@
 
     <div class="px-5 mt-8">
       <div class="w-full h-auto border-2 rounded-xl py-1 relative">
-        <img class="absolute -left-12 -bottom-2 h-32" src="@/assets/images/popularCaffee/Ice-caffee-late.png" alt="" />
+        <img
+          class="absolute -left-12 -bottom-2 h-32"
+          src="@/assets/images/popularCaffee/Ice-caffee-late.png"
+          alt=""
+        />
         <div class="flex flex-row justify-around py-2 px-4">
           <h1 class="text-xl">Ice Caffee Late</h1>
           <h1 class="text-xl">£4.99</h1>
@@ -84,16 +91,20 @@
           </p>
         </div>
         <span
-          class="material-icons w-10 h-10 absolute rounded-xl bottom-0 -right-5 btn-add-coffee"
+          class="material-icons add-icon p-1 absolute rounded-xl bottom-0 -right-5 btn-add-coffee"
         >
           add
         </span>
       </div>
     </div>
 
-        <div class="px-5 mt-8">
+    <div class="px-5 mt-8">
       <div class="w-full h-auto border-2 rounded-xl py-1 relative">
-        <img class="absolute -left-12 -bottom-2 h-32" src="@/assets/images/popularCaffee/Ice-caffee-late.png" alt="" />
+        <img
+          class="absolute -left-12 -bottom-2 h-32"
+          src="@/assets/images/popularCaffee/Ice-caffee-late.png"
+          alt=""
+        />
         <div class="flex flex-row justify-around py-2 px-4">
           <h1 class="text-xl">Ice Caffee Late</h1>
           <h1 class="text-xl">£4.99</h1>
@@ -104,16 +115,20 @@
           </p>
         </div>
         <span
-          class="material-icons w-10 h-10 absolute rounded-xl bottom-0 -right-5 btn-add-coffee"
+          class="material-icons add-icon p-1 absolute rounded-xl bottom-0 -right-5 btn-add-coffee"
         >
           add
         </span>
       </div>
     </div>
 
-        <div class="px-5 mt-8">
+    <div class="px-5 mt-8">
       <div class="w-full h-auto border-2 rounded-xl py-1 relative">
-        <img class="absolute -left-12 -bottom-2 h-32" src="@/assets/images/popularCaffee/Ice-caffee-late.png" alt="" />
+        <img
+          class="absolute -left-12 -bottom-2 h-32"
+          src="@/assets/images/popularCaffee/Ice-caffee-late.png"
+          alt=""
+        />
         <div class="flex flex-row justify-around py-2 px-4">
           <h1 class="text-xl">Ice Caffee Late</h1>
           <h1 class="text-xl">£4.99</h1>
@@ -124,13 +139,12 @@
           </p>
         </div>
         <span
-          class="material-icons w-10 h-10 absolute rounded-xl bottom-0 -right-5 btn-add-coffee"
+          class="material-icons add-icon p-1 absolute rounded-xl bottom-0 -right-5 btn-add-coffee"
         >
           add
         </span>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -165,6 +179,9 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+  },
+  methods: {
+    
   },
 };
 </script>
@@ -214,5 +231,14 @@ export default {
 
 .btn-heart {
   color: #a87049 !important;
+}
+
+.link-active{
+    color: #a87049;
+    border-bottom: 1px solid #a87049;
+}
+
+.add-icon{
+    color: white;
 }
 </style>

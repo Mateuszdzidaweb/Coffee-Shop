@@ -34,12 +34,21 @@ const routes = [{
         component: () => import( /* webpackChunkName: "about" */ '../views/Favorites.vue')
     },
     {
-        path: '/settings',
-        name: 'Settings',
+        path: '/snapp',
+        name: 'Snapp',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import( /* webpackChunkName: "about" */ '../views/Settings.vue')
+        component: () => import( /* webpackChunkName: "about" */ '../views/Snapp.vue')
+    },
+    {
+        path: '/single-caffee',
+        name: 'Caffee',
+        props: true,
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import( /* webpackChunkName: "about" */ '../views/SingleCaffee.vue')
     },
 
     {
