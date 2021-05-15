@@ -1,6 +1,6 @@
 <template>
   <div class="mb-40">
-    <div
+    <!-- <div
       v-for="caffee in caffees"
       :key="caffee.id"
       class="rounded-xl clip-path ml-2 mr-2 p-2 text-black flex flex-col box-shadow mt-10"
@@ -11,16 +11,7 @@
           :src="require('@/assets/images/' + caffee.image)"
           alt=""
         />
-        <!-- <div
-              class="absolute -right-9 -top-9 w-40 h-40 rounded-full bg-cover"
-              :style="{
-                background:
-                  'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url(' +
-                  require('@/assets/images/' +
-                     caffee.image) +
-                  ') center no-repeat',
-              }"
-            ></div> -->
+
         <span
           class="material-icons md:text-5xl md:pl-4 mt-2 px-2 self-start btn-heart-active"
         >
@@ -35,16 +26,16 @@
         <h1 class="text-black text-xl mt-2 px-2 self-start text-left">
           {{ caffee.caffeeDescription }}
         </h1>
-        <!-- <div
-              class="w-10 h-10 bg-black absolute rounded-xl -bottom-2 -right-2"
-            ></div> -->
+
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 
 <script>
+import Localbase from "localbase";
+let db = new Localbase("db");
 const axios = require("axios");
 let url =
   "https://coffeeshopapp-ba533-default-rtdb.firebaseio.com/caffees" + ".json";
@@ -55,7 +46,7 @@ export default {
     };
   },
 
-  mounted() {
+  created() {
     axios
       .get(url)
       .then((response) => {
@@ -65,13 +56,19 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+
+    db.collection("orders")
+      .get()
+      .then((orders) => {
+        console.log(orders);
+      });
   },
 };
 </script>
 
 
 <style lang="less">
-    .btn-heart-active{
-        color: #FF5F58;
-    }
+.btn-heart-active {
+  color: #ff5f58;
+}
 </style>

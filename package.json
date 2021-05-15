@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "localbase": "^0.7.5",
     "register-service-worker": "^1.7.1",
     "swiper": "^6.6.1",
     "vue": "^2.6.11",

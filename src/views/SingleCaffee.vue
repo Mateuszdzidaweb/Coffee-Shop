@@ -13,24 +13,64 @@
         </span>
       </div>
 
-      <img v-if="caffee !== null"
-        class="absolute right-0 -bottom-10  w-auto h-auto bg-white rounded-full"
+      <img
+        v-if="caffee !== null"
+        class="absolute right-0 -bottom-10 w-auto h-auto bg-white rounded-full"
         :src="require('@/assets/images/' + caffee.image)"
         alt=""
       />
     </div>
 
     <div v-if="caffee !== null" class="w-full h-auto mt-20 px-8">
-      <h1 v-if="caffee.caffeeName" class="text-2xl text-left font-bold">{{ caffee.caffeeName }}</h1>
+      <h1 v-if="caffee.caffeeName" class="text-2xl text-left font-bold">
+        {{ caffee.caffeeName }}
+      </h1>
       <p class="text-left text-xl py-2">
         {{ caffee.caffeeDescription }}
       </p>
       <div class="flex flex-col">
-        <QuanityBtn></QuanityBtn>
+        <!-- Quantity btn -->
+        <div
+          class="flex flex-row border h-10 w-24 rounded-lg border-gray-400 relative"
+        >
+          <button
+            @click="subtractQuantity"
+            class="font-semibold border-r border-gray-400 h-full w-20 flex rounded-l focus:outline-none cursor-pointer"
+          >
+            <span class="m-auto brown-color-text">-</span>
+          </button>
+          <input
+            type="hidden"
+            class="md:p-2 p-1 text-xs md:text-base border-gray-400 focus:outline-none text-center"
+            readonly
+            name="custom-input-number"
+          />
+          <div
+            class="bg-white w-24 text-xs md:text-base flex items-center justify-center cursor-default"
+          >
+            <span class="brown-color-text text-xl">{{ quantity }}</span>
+          </div>
+
+          <button
+            @click="addQuantity"
+            class="font-semibold border-l border-gray-400 h-full w-20 flex rounded-r focus:outline-none cursor-pointer"
+          >
+            <span class="m-auto brown-color-text">+</span>
+          </button>
+          <div
+            class="absolute flex flex-col p-2 w-32 md:w-full mt-6 md:mt-8 mt-10 flex items-start justify-center"
+          ></div>
+        </div>
+
         <label class="text-left text-xl text-gray-400 mt-5" for="size"
           >Size:</label
         >
-        <select class="border-b-2 h-10 text-xl" name="size" id="size">
+        <select
+          v-model="sizeSelected"
+          class="border-b-2 h-10 text-xl"
+          name="size"
+          id="size"
+        >
           <option value="Short">Short</option>
           <option value="Tall">Tall</option>
           <option value="Grande">Grande</option>
@@ -38,6 +78,7 @@
         </select>
         <label class="text-left text-md mt-5" for="name">Name</label>
         <input
+          v-model="customerName"
           class="h-10 text-xl border-b-2"
           type="text"
           id="name"
@@ -46,14 +87,20 @@
         />
         <label class="text-left text-md mt-5" for="name">Contact Phone</label>
         <input
+          v-model="customerTelephone"
           class="h-10 text-xl border-b-2"
-          type="text"
+          type="number"
           id="phone"
           name="phone"
           placeholder="+44"
         />
       </div>
+      <h1>{{ sizeSelected }}</h1>
+      <h1>{{ customerName }}</h1>
+      <h1>{{ customerTelephone }}</h1>
+      <h1>{{ quantity }}</h1>
       <button
+        @click="addOrder"
         class="w-24 h-10 brown-color text-xl text-white font-bold rounded-full mt-5"
       >
         Order
@@ -64,17 +111,24 @@
 
 
 <script>
-import QuanityBtn from "@/components/QuantityBtn.vue";
+// import QuanityBtn from "@/components/QuantityBtn.vue";
 const axios = require("axios");
+import Localbase from "localbase";
+let db = new Localbase("db");
 export default {
   props: ["id"],
   data() {
     return {
       caffee: null,
+      quantity: 1,
+      sizeSelected: "",
+      customerName: "",
+      customerTelephone: "",
+      order: [],
     };
   },
   components: {
-    QuanityBtn: QuanityBtn,
+    // QuanityBtn: QuanityBtn,
   },
   mounted() {
     axios
@@ -90,6 +144,30 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+  },
+  methods: {
+    addQuantity() {
+      this.quantity++;
+    },
+    subtractQuantity() {
+      if (this.quantity > 1) {
+        this.quantity--;
+      } else {
+        this.quantity = 1;
+      }
+    },
+    addOrder() {
+      let newOrder = {
+        id: Date.now(),
+        caffeeName: this.caffee.caffeeName,
+        caffeeImage: this.caffee.image,
+        quantity: this.quantity,
+        customerName: this.customerName,
+        sizeSelected: this.sizeSelected,
+        customerTelephone: this.customerTelephone,
+      };
+      db.collection("orders").add(newOrder);
+    },
   },
 };
 </script>
@@ -115,6 +193,10 @@ export default {
 
 input:focus {
   outline: none;
+}
+
+.brown-color-text{
+    color: #a87049;
 }
 </style>
 

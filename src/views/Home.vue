@@ -1,6 +1,5 @@
 <template>
   <div class="home mb-40">
-
     <div class="flex flex-row justify-around my-5 text-black">
       <div>
         <router-link to="/home" class="text-xl md:text-3xl link-active"
@@ -21,9 +20,7 @@
           :key="caffee.id"
           class="rounded-xl clip-path ml-2 mr-2 p-2 text-black flex flex-col box-shadow"
         >
-          <router-link
-            :to="{ name: 'Caffee', params: { id: caffee.id } }"
-          >
+          <router-link :to="{ name: 'Caffee', params: { id: caffee.id } }">
             <div class="rounded-xl relative flex flex-col">
               <img
                 class="absolute -right-8 -top-8 w-36 h-auto"
@@ -149,6 +146,7 @@
 </template>
 
 <script>
+
 const axios = require("axios");
 let url =
   "https://coffeeshopapp-ba533-default-rtdb.firebaseio.com/caffees" + ".json";
@@ -180,9 +178,7 @@ export default {
         console.log(error);
       });
   },
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>
 
@@ -233,12 +229,12 @@ export default {
   color: #a87049 !important;
 }
 
-.link-active{
-    color: #a87049;
-    border-bottom: 1px solid #a87049;
+.link-active {
+  color: #a87049;
+  border-bottom: 1px solid #a87049;
 }
 
-.add-icon{
-    color: white;
+.add-icon {
+  color: white;
 }
 </style>
