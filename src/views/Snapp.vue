@@ -8,18 +8,11 @@
 
     <Picture> </Picture>
 
-    <!-- <button
-      @click="openCamera"
-      class="w-auto h-auto bg-blue-600 mt-10 mb-5 rounded-full py-2 px-4 text-xl font-bold"
-    >
-      Take a snap
-    </button> -->
-
           <div class="flex flex-row justify-center w-full fixed bottom-24">
         <div>
           <span
            @click="saveImg"
-            class="material-icons material-icons-take-photo rounded-full bg-gray-300  p-4 mt-12 mr-2"
+            class="material-icons material-icons-take-photo rounded-full bg-gray-300 dark:bg-black  p-4 mt-12 mr-2"
           >
             save
           </span>
@@ -27,7 +20,7 @@
         <div>
           <span
            @click="openCamera"
-            class="material-icons material-icons-take-photo rounded-full bg-gray-300 p-4 mt-4"
+            class="material-icons material-icons-take-photo rounded-full bg-gray-300 dark:bg-black p-4 mt-4"
           >
             launch
           </span>
@@ -35,7 +28,7 @@
         <div>
           <span
             @click="clearCanvas"
-            class="material-icons material-icons-take-photo rounded-full bg-gray-300 p-4 mt-12 mr-2"
+            class="material-icons material-icons-take-photo rounded-full bg-gray-300 dark:bg-black  p-4 mt-12 mr-2"
           >
             delete
           </span>

@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-40">
+  <div class="pb-40">
     <div
       class="h-36 w-full brown-color border-left-radius relative flex flex-row items-end justify-around"
     >
@@ -17,7 +17,7 @@
         v-if="caffee !== null"
         class="absolute right-0 -bottom-10 w-auto h-auto bg-white rounded-full"
         :src="require('@/assets/images/' + caffee.image)"
-        alt=""
+        alt="Coffee Image"
       />
     </div>
 
@@ -30,88 +30,93 @@
       </p>
       <div class="flex flex-col">
         <!-- Quantity btn -->
-        <div
-          class="flex flex-row border h-10 w-24 rounded-lg border-gray-400 relative"
-        >
-          <button
-            @click="subtractQuantity"
-            class="font-semibold border-r border-gray-400 h-full w-20 flex rounded-l focus:outline-none cursor-pointer"
-          >
-            <span class="m-auto brown-color-text">-</span>
-          </button>
-          <input
-            type="hidden"
-            class="md:p-2 p-1 text-xs md:text-base border-gray-400 focus:outline-none text-center"
-            readonly
-            name="custom-input-number"
-          />
+        <div class="flex flex-row justify-between">
           <div
-            class="bg-white w-24 text-xs md:text-base flex items-center justify-center cursor-default"
+            class="flex flex-row border h-10 w-24 rounded-lg border-gray-400 relative"
           >
-            <span class="brown-color-text text-xl">{{ quantity }}</span>
-          </div>
+            <button
+              @click="subtractQuantity"
+              class="font-semibold border-r border-gray-400 h-full w-20 flex rounded-l focus:outline-none cursor-pointer"
+            >
+              <span class="m-auto brown-color-text">-</span>
+            </button>
+            <input
+              type="hidden"
+              class="md:p-2 p-1 text-xs md:text-base border-gray-400 focus:outline-none text-center"
+              readonly
+              name="custom-input-number"
+            />
+            <div
+              class="bg-white w-24 text-xs md:text-base flex items-center justify-center cursor-default"
+            >
+              <span class="brown-color-text text-xl">{{ quantity }}</span>
+            </div>
 
-          <button
-            @click="addQuantity"
-            class="font-semibold border-l border-gray-400 h-full w-20 flex rounded-r focus:outline-none cursor-pointer"
-          >
-            <span class="m-auto brown-color-text">+</span>
-          </button>
-          <div
-            class="absolute flex flex-col p-2 w-32 md:w-full mt-6 md:mt-8 mt-10 flex items-start justify-center"
-          ></div>
+            <button
+              @click="addQuantity"
+              class="font-semibold border-l border-gray-400 h-full w-20 flex rounded-r focus:outline-none cursor-pointer"
+            >
+              <span class="m-auto brown-color-text">+</span>
+            </button>
+            <div
+              class="absolute flex flex-col p-2 w-32 md:w-full mt-6 md:mt-8 items-start justify-center"
+            ></div>
+          </div>
+          <h1 class="text-2xl self-center">£{{ totalPriceToDecimal }}</h1>
         </div>
 
-        <label class="text-left text-xl text-gray-400 mt-5" for="size"
-          >Size:</label
-        >
-        <select
-          v-model="sizeSelected"
-          class="border-b-2 h-10 text-xl"
-          name="size"
-          id="size"
-        >
-          <option value="Short">Short</option>
-          <option value="Tall">Tall</option>
-          <option value="Grande">Grande</option>
-          <option value="Venti">Venti</option>
-        </select>
-        <label class="text-left text-md mt-5" for="name">Name</label>
-        <input
-          v-model="customerName"
-          class="h-10 text-xl border-b-2"
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Name"
-        />
-        <label class="text-left text-md mt-5" for="name">Contact Phone</label>
-        <input
-          v-model="customerTelephone"
-          class="h-10 text-xl border-b-2"
-          type="number"
-          id="phone"
-          name="phone"
-          placeholder="+44"
-        />
+        <form>
+          <label class="text-left text-xl text-gray-400 mt-5 h-full" for="size"
+            >Size:</label
+          >
+          <select
+            v-model="sizeSelected"
+            class="border-b-2 h-10 text-xl dark:text-black"
+            name="size"
+            required
+            id="size"
+          >
+            <option value="Short">Short</option>
+            <option value="Tall">Tall</option>
+            <option value="Grande">Grande</option>
+            <option value="Venti">Venti</option>
+          </select>
+          <label class="text-left text-md mt-5" for="name">Name</label>
+          <input
+            v-model="customerName"
+            class="h-10 text-xl border-b-2 pl-2 text-black"
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Name"
+          />
+          <p class="text-left text-red-500 ml-3">{{ nameErrorMsg }}</p>
+          <label class="text-left text-md mt-5" for="name">Contact Phone</label>
+          <input
+            v-model="customerTelephone"
+            class="h-10 text-xl border-b-2 pl-2 text-black"
+            type="number"
+            id="phone"
+            name="phone"
+            required
+            placeholder="+44"
+          />
+          <p class="text-left text-red-500 ml-3">{{ telephoneErrorMsg }}</p>
+          <input
+            type="submit"
+            value="Order"
+            @click="addOrder"
+            class="w-24 h-10 brown-color text-xl text-white font-bold rounded-full mt-5 m-auto"
+          />
+        </form>
       </div>
-      <h1>{{ sizeSelected }}</h1>
-      <h1>{{ customerName }}</h1>
-      <h1>{{ customerTelephone }}</h1>
-      <h1>{{ quantity }}</h1>
-      <button
-        @click="addOrder"
-        class="w-24 h-10 brown-color text-xl text-white font-bold rounded-full mt-5"
-      >
-        Order
-      </button>
     </div>
   </div>
 </template>
 
 
 <script>
-// import QuanityBtn from "@/components/QuantityBtn.vue";
 const axios = require("axios");
 import Localbase from "localbase";
 let db = new Localbase("db");
@@ -121,15 +126,17 @@ export default {
     return {
       caffee: null,
       quantity: 1,
-      sizeSelected: "",
+      sizeSelected: "Short",
       customerName: "",
       customerTelephone: "",
+      totalPrice: "",
+      totalPriceToDecimal: "",
+      nameErrorMsg: "",
+      telephoneErrorMsg: "",
       order: [],
     };
   },
-  components: {
-    // QuanityBtn: QuanityBtn,
-  },
+  components: {},
   mounted() {
     axios
       .get(
@@ -140,6 +147,8 @@ export default {
       .then((response) => {
         this.caffee = response.data;
         console.log(this.caffee);
+        this.totalPrice = this.caffee.price;
+        this.totalPriceToDecimal = parseFloat(this.totalPrice).toFixed(2);
       })
       .catch((error) => {
         console.log(error);
@@ -148,25 +157,42 @@ export default {
   methods: {
     addQuantity() {
       this.quantity++;
+      this.totalPrice = this.caffee.price * this.quantity;
+      this.totalPriceToDecimal = parseFloat(this.totalPrice).toFixed(2);
     },
     subtractQuantity() {
       if (this.quantity > 1) {
         this.quantity--;
+        this.totalPrice = this.caffee.price * this.quantity;
+        this.totalPriceToDecimal = parseFloat(this.totalPrice).toFixed(2);
       } else {
         this.quantity = 1;
+        this.totalPrice = this.caffee.price * this.quantity;
+        this.totalPriceToDecimal = parseFloat(this.totalPrice).toFixed(2);
       }
     },
-    addOrder() {
-      let newOrder = {
-        id: Date.now(),
-        caffeeName: this.caffee.caffeeName,
-        caffeeImage: this.caffee.image,
-        quantity: this.quantity,
-        customerName: this.customerName,
-        sizeSelected: this.sizeSelected,
-        customerTelephone: this.customerTelephone,
-      };
-      db.collection("orders").add(newOrder);
+    addOrder(event) {
+      event.preventDefault();
+      if (this.customerName === "") {
+        this.nameErrorMsg = "Please Enter Your name";
+      }
+      if (this.customerTelephone === "") {
+        this.telephoneErrorMsg = "Please enter your telephone number";
+      } else {
+        let newOrder = {
+          id: Date.now(),
+          caffeeName: this.caffee.caffeeName,
+          caffeeImage: this.caffee.image,
+          quantity: this.quantity,
+          totalPrice: this.totalPriceToDecimal,
+          customerName: this.customerName,
+          sizeSelected: this.sizeSelected,
+          customerTelephone: this.customerTelephone,
+        };
+
+        db.collection("orders").add(newOrder);
+        alert("Order Placed");
+      }
     },
   },
 };
@@ -191,12 +217,16 @@ export default {
   color: #a87049;
 }
 
+form {
+  display: contents;
+}
+
 input:focus {
   outline: none;
 }
 
-.brown-color-text{
-    color: #a87049;
+.brown-color-text {
+  color: #a87049;
 }
 </style>
 

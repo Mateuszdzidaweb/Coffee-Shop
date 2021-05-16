@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-14 flex items-center top-0 sticky top-bar bg-dark-blue px-3 md:h-20 header"
+    class="w-full h-14 flex items-center top-0 sticky top-bar bg-dark-blue px-3 md:h-20 header dark:bg-gray-800"
   >
     <GoBack></GoBack>
     <h1 class="text-3xl m-auto text-white font-bold route-name-width">
@@ -65,9 +65,6 @@ export default {
   font-size: 32px !important;
 }
 
-.route-name-width {
-  /* width: calc(100% + -84px); */
-}
 </style>
 
 

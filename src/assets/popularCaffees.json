@@ -1,0 +1,24 @@
+{
+    "popularCaffees": [{
+            "id": 0,
+            "caffeeName": "Ice Caffee Late",
+            "caffeeDescription": "Espresso shots are topped with hot water to produce a light layer of crema in true European style.",
+            "price": "4.99",
+            "image": "Ice-caffee-late.png"
+        },
+        {
+            "id": 1,
+            "caffeeName": "Chocolatey Mocchiato",
+            "caffeeDescription": "Chocolate mixture of white and dark chocolate mixed with milk and ice",
+            "price": "3.29",
+            "image": "chocolatey-mocchiato.png"
+        },
+        {
+            "id": 2,
+            "caffeeName": "Caffe Latte",
+            "caffeeDescription": "Dark rich espress balanced with streamed milk and topped with light foam",
+            "price": "4.50",
+            "image": "caffee-late.png"
+        }
+    ]
+}

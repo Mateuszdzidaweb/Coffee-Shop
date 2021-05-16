@@ -5,8 +5,9 @@
       @toogleLightMode="toogleLightMode"
     ></app-header>
 
-    <div></div>
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
     <app-navbar></app-navbar>
   </div>
 </template>
@@ -15,7 +16,6 @@
 <script>
 import Header from "@/components/Header.vue";
 import Navbar from "@/components/Navbar.vue";
-// import DarkModeBtn from "@/components/DarkModeBtn.vue";
 export default {
   // props: ['mode'],
   data() {
@@ -26,7 +26,6 @@ export default {
   components: {
     appHeader: Header,
     appNavbar: Navbar,
-    // DarkModeBtn: DarkModeBtn,
   },
   mounted() {},
   methods: {
@@ -41,6 +40,7 @@ export default {
 </script>
 
 <style lang="less">
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -53,8 +53,8 @@ export default {
 }
 
 .dark {
-    background-color: #192734  !important;
-    color: white  !important;
+  background-color: #131313 !important;
+  color: white !important;
   transition: background-color 0.5s ease-in-out !important;
 }
 
@@ -67,6 +67,18 @@ export default {
       color: #42b983 !important;
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>
 

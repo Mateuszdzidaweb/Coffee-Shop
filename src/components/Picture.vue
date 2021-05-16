@@ -1,5 +1,5 @@
 <template>
-  <div class="picture w-full h-auto border-2 border-black">
+  <div class="picture w-full h-auto">
     <canvas class="m-auto h-auto w-auto"> </canvas>
   </div>
 </template>

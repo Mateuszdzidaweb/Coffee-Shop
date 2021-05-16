@@ -4,7 +4,6 @@
     <span
       v-show="DarkModeisOff"
       @click="DarkModeOff"
-      
       class="border rounded-full border-grey flex items-center cursor-pointer w-14 justify-start"
     >
       <span
@@ -29,12 +28,11 @@
 
 <script>
 export default {
-    
   data() {
     return {
       DarkModeisOff: true,
       DarkModeisOn: false,
-      mode: ''
+      mode: "",
     };
   },
   components: {},
@@ -42,13 +40,12 @@ export default {
     DarkModeOff() {
       this.DarkModeisOff = false;
       this.DarkModeisOn = true;
-      this.mode = ''
+      this.mode = "";
     },
     DarkModeOn() {
-      this.DarkModeisOn = false, 
-      this.DarkModeisOff = true;
-      this.mode = "dark"
-      this.$emit('toogleMode')
+      (this.DarkModeisOn = false), (this.DarkModeisOff = true);
+      this.mode = "dark";
+      this.$emit("toogleMode");
     },
   },
 };

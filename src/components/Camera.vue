@@ -6,7 +6,7 @@
         <div v-if="frontCamera == false">
           <span
             @click="setFrontCamera"
-            class="material-icons material-icons-take-photo rounded-full bg-white p-4 mt-12 mr-2"
+            class="material-icons material-icons-take-photo rounded-full bg-white dark:bg-gray-600  p-4 mt-12 mr-2"
           >
             cameraswitch
           </span>
@@ -14,7 +14,7 @@
         <div v-if="frontCamera == true">
           <span
             @click="setRearCamera"
-            class="material-icons material-icons-take-photo rounded-full bg-white p-4 mt-12 mr-2"
+            class="material-icons material-icons-take-photo rounded-full bg-white dark:bg-gray-600   p-4 mt-12 mr-2"
           >
             cameraswitch
           </span>
@@ -22,7 +22,7 @@
         <div>
           <span
             @click="takePicture"
-            class="material-icons material-icons-take-photo rounded-full bg-white p-4 mt-4"
+            class="material-icons material-icons-take-photo rounded-full bg-white dark:bg-gray-600   p-4 mt-4"
           >
             photo_camera
           </span>
@@ -30,20 +30,17 @@
         <div>
           <span
             @click="close"
-            class="material-icons material-icons-take-photo rounded-full bg-white p-4 mt-12 mr-2"
+            class="material-icons material-icons-take-photo rounded-full bg-white dark:bg-gray-600   p-4 mt-12 mr-2"
           >
             close
           </span>
         </div>
       </div>
-
-      <!-- <button @click="setFrontCamera">Front</button>
-      <button @click="setRearCamera">Rear</button> -->
     </div>
   </div>
 </template>
 
-<script>
+<script> 
 export default {
   name: "Camera",
   data() {
@@ -84,9 +81,12 @@ export default {
         alert("Cannot get Media Device");
       }
     },
-    videoOff(stream) {
-
-        stream.stop();
+    videoOff(navigator) {
+      navigator.getTracks().forEach(function (track) {
+        if (track.readyState == "live" && track.kind === "video") {
+          track.stop();
+        }
+      });
     },
     takePicture() {
       this.$emit("takePicture");
@@ -162,7 +162,7 @@ export default {
   created() {
     // this.init();
     this.$root.$refs.launchCamera = this;
-     this.$root.$refs.stopCamera = this;
+    this.$root.$refs.stopCamera = this;
   },
 };
 </script>
@@ -176,7 +176,6 @@ export default {
   left: 0;
   right: 0;
   background-color: #000000fa;
-  /* background-color: #01012480; */
   display: flex;
   flex-direction: column;
   justify-content: center;
