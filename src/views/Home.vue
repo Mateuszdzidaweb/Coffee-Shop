@@ -14,7 +14,7 @@
     </div>
 
     <div class="mt-10">
-      <swiper class="swiper pb-20" :options="swiperOption">
+      <swiper class="swiper" :options="swiperOption">
         <swiper-slide
           v-for="caffee in caffees"
           :key="caffee.id"
@@ -64,7 +64,9 @@
       :key="popularCaffee.id"
       class="px-5 mt-8"
     >
-      <div class="w-full h-auto border-2 border-gold rounded-xl py-1 relative py-2">
+      <div
+        class="w-full h-auto border-2 border-gold rounded-xl py-1 relative py-2"
+      >
         <img
           class="popular-caffee-img absolute -left-12 -bottom-2 h-32"
           :src="require('@/assets/images/popularCaffee/' + popularCaffee.image)"
@@ -119,17 +121,42 @@ export default {
         this.caffees = response.data;
         console.log(response);
       })
+      .then(() => {
+        let caffees = this.caffees;
+        localStorage.caffees = JSON.stringify(caffees);
+      })
+
       .catch((error) => {
         console.log(error);
       });
     console.log(this.popularCaffees);
+  },
+  created() {
+    if (localStorage.caffees) {
+      this.caffees = JSON.parse(localStorage.caffees);
+    } else {
+      axios
+        .get(url)
+        .then((response) => {
+          this.caffees = response.data;
+          console.log(response);
+        })
+        .then(() => {
+          let caffees = this.caffees;
+          localStorage.caffees = JSON.stringify(caffees);
+        })
+
+        .catch((error) => {
+          console.log(error);
+        });
+      console.log(this.popularCaffees);
+    }
   },
   methods: {},
 };
 </script>
 
 <style lang="less">
-
 .swiper-wrapper {
   padding-bottom: 20px;
   padding-top: 20px;
@@ -155,11 +182,11 @@ export default {
 }
 
 .box-shadow {
-  box-shadow: 1px 2px 1px 2px #DAA520 !important;
+  box-shadow: 1px 2px 1px 2px #daa520 !important;
 }
 
-.border-gold{
-    border-color: #DAA520;
+.border-gold {
+  border-color: #daa520;
 }
 
 .btn-add-coffee {

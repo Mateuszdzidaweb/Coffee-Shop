@@ -15,7 +15,7 @@ const routes = [{
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import( /* webpackChunkName: "about" */ '../views/Home.vue')
+        component: () => import( /* webpackChunkName: "Home" */ '../views/Home.vue')
     },
     {
         path: '/stores',
@@ -23,7 +23,7 @@ const routes = [{
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import( /* webpackChunkName: "about" */ '../views/Stores.vue')
+        component: () => import( /* webpackChunkName: "Stores" */ '../views/Stores.vue')
     },
     {
         path: '/orders',
@@ -31,7 +31,7 @@ const routes = [{
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import( /* webpackChunkName: "about" */ '../views/Orders.vue')
+        component: () => import( /* webpackChunkName: "Orders" */ '../views/Orders.vue')
     },
     {
         path: '/snapp',
@@ -39,7 +39,7 @@ const routes = [{
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import( /* webpackChunkName: "about" */ '../views/Snapp.vue')
+        component: () => import( /* webpackChunkName: "Snapp" */ '../views/Snapp.vue')
     },
     {
         path: '/single-caffee',
@@ -48,7 +48,7 @@ const routes = [{
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import( /* webpackChunkName: "about" */ '../views/SingleCaffee.vue')
+        component: () => import( /* webpackChunkName: "SingleCaffee" */ '../views/SingleCaffee.vue')
     },
 ]
 

@@ -53,7 +53,6 @@
         </h1>
       </div>
     </div>
-    <h1>{{ orders }}</h1>
   </div>
 </template>
 

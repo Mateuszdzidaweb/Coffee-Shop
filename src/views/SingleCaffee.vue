@@ -150,9 +150,38 @@ export default {
         this.totalPrice = this.caffee.price;
         this.totalPriceToDecimal = parseFloat(this.totalPrice).toFixed(2);
       })
+      .then(() => {
+        let caffee = this.caffee;
+        localStorage.caffee = JSON.stringify(caffee);
+      })
       .catch((error) => {
         console.log(error);
       });
+  },
+  created() {
+    if (localStorage.caffee) {
+      this.caffee = JSON.parse(localStorage.caffee);
+    } else {
+      axios
+        .get(
+          "https://coffeeshopapp-ba533-default-rtdb.firebaseio.com/caffees/" +
+            this.id +
+            ".json"
+        )
+        .then((response) => {
+          this.caffee = response.data;
+          console.log(this.caffee);
+          this.totalPrice = this.caffee.price;
+          this.totalPriceToDecimal = parseFloat(this.totalPrice).toFixed(2);
+        })
+        .then(() => {
+          let caffee = this.caffee;
+          localStorage.caffee = JSON.stringify(caffee);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
   methods: {
     addQuantity() {
